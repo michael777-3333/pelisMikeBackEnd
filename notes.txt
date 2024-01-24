@@ -1,0 +1,6 @@
+morgan: ver las peticiones que se hacen
+
+app.js: vamos a manejar la aplicacion
+index.js: vamos a ejecutar la aplicacion
+
+js-cookie : nos permite leer las cookies desde el frond end
