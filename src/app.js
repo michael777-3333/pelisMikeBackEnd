@@ -4,6 +4,7 @@ import authRoutes from './routes/auth.routes.js'
 import taskRoutes from './routes/task.routes.js' 
 import moviesRoutes from './routes/movies.routes.js'
 import genresRoutes from './routes/genres.routes.js'
+import user from './routes/user.routes.js'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 
@@ -23,5 +24,6 @@ app.use("/api",authRoutes) //las rutas de autenticacion
 app.use('/api',taskRoutes) // rutas de borrar favoritos 
 app.use('/api',moviesRoutes)
 app.use('/api',genresRoutes)
+app.use('/api',user)
 
 export default app
