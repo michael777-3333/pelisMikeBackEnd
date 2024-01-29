@@ -4,8 +4,8 @@ import { updateUser,getUser } from '../controllers/user.controllers.js'
 
 const router =Router()
 
-router.put('/updateUser/:id',authRequired,updateUser)
-router.get('/getUser/:id',authRequired,getUser)
+router.put('/updateUser/:id',updateUser)
+router.get('/getUser/:id',getUser)
 
 
 

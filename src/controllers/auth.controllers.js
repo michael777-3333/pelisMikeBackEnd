@@ -3,6 +3,7 @@ import bcryp from "bcryptjs"; //encriptar la password
 import { CreateAccessToken } from "../libs/jwt.js";
 import jwt from "jsonwebtoken";
 import { TOKEN_SECRET } from "../config.js";
+import { OAuth2Client } from 'google-auth-library';
 
 export const register = async (req, res) => {
   const { email, password, username } = req.body;
@@ -52,6 +53,8 @@ export const login = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+
 
 export const logout = (req, res) => {
   try {
@@ -103,3 +106,4 @@ export const verifyToken = async (req, res) => {
     res.status(500).json({message:error.message})
   }
 };
+

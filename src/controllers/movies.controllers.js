@@ -2,6 +2,7 @@ import Movies from "../models/movies.model.js";
 // import Genres from '.'
 export const getMovies = async (req, res) => {
   try {
+    console.log('ssss');
     const movies = await Movies.find().populate("genres");
     res.json(movies);
   } catch (error) {
