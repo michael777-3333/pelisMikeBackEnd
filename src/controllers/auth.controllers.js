@@ -28,6 +28,7 @@ export const register = async (req, res) => {
       httpOnly: false,
       maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
       expires: new Date(Date.now() + 3600000),
+      domain: '.https://main--leafy-haupia-13a5b2.netlify.app'
     });
     res.json({
       id: userSaved._id,
@@ -55,6 +56,7 @@ export const login = async (req, res) => {
       httpOnly: false,
       maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
       expires: new Date(Date.now() + 3600000),
+      domain: '.https://main--leafy-haupia-13a5b2.netlify.app'
     });
     res.json({
       id: userFound._id,
@@ -112,8 +114,6 @@ export const verifyToken = async (req, res) => {
         id: userFound._id,
         username: userFound.username,
         email: userFound.email,
-        maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
-        expires: new Date(Date.now() + 3600000),
       });
     });
   } catch (error) {
