@@ -24,11 +24,11 @@ export const register = async (req, res) => {
     const token = await CreateAccessToken({ id: userSaved._id });
     res.cookie("token", token, {
       sameSite: "none", //que no esta en el mismo dominio la cookie
-      secure: false,
-      httpOnly: false,
-      maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
+      secure: true,
+      httpOnly: true,
+      // maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
       expires: new Date(Date.now() + 3600000),
-      domain: '.https://main--leafy-haupia-13a5b2.netlify.app'
+      // domain: '.https://main--leafy-haupia-13a5b2.netlify.app'
     });
     res.json({
       id: userSaved._id,
@@ -52,9 +52,9 @@ export const login = async (req, res) => {
     const token = await CreateAccessToken({ id: userFound._id });
     res.cookie("token", token, {
       sameSite: "none", //que no esta en el mismo dominio la cookie
-      secure: false,
-      httpOnly: false,
-      maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
+      secure: true,
+      httpOnly: true,
+      // maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
       expires: new Date(Date.now() + 3600000),
       domain: '.netlify.app'
     });
