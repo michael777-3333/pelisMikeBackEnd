@@ -56,7 +56,7 @@ export const login = async (req, res) => {
       httpOnly: false,
       maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
       expires: new Date(Date.now() + 3600000),
-      domain: '.https://main--leafy-haupia-13a5b2.netlify.app'
+      domain: '.netlify.app'
     });
     res.json({
       id: userFound._id,
