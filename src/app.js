@@ -15,7 +15,7 @@ dotenv.config();
 
 const app= express()
  app.use(cors({
-    origin:'http://localhost:5173',
+    origin:'https://65b8780418830d000833cfa8--leafy-haupia-13a5b2.netlify.app',
     credentials:true, // para que tenga las credentiales de cookies en los dos dominios 
 
  }
