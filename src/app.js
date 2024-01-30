@@ -15,7 +15,7 @@ dotenv.config();
 
 const app= express()
  app.use(cors({
-    origin:'https://pelis-mike-e6rr.vercel.app',
+    origin:'https://65b9155824dc9a00078877ca--leafy-haupia-13a5b2.netlify.app',
    // origin:'http://localhost:5173',
     credentials:true, // para que tenga las credentiales de cookies en los dos dominios 
 
