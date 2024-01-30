@@ -18,7 +18,13 @@ export const register = async (req, res) => {
     });
     const userSaved = await newUser.save();
     const token = await CreateAccessToken({ id: userSaved._id });
-    res.cookie("token", token);
+    res.cookie("token", token, {
+      sameSite: "none", //que no esta en el mismo dominio la cookie
+      secure: true,
+      httpOnly: false,
+      maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
+      expires: new Date(Date.now() + 3600000),
+    });
     res.json({
       id: userSaved._id,
       email: userSaved.email,
@@ -43,6 +49,8 @@ export const login = async (req, res) => {
       sameSite: "none", //que no esta en el mismo dominio la cookie
       secure: true,
       httpOnly: false,
+      maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
+      expires: new Date(Date.now() + 3600000),
     });
     res.json({
       id: userFound._id,
@@ -100,6 +108,8 @@ export const verifyToken = async (req, res) => {
         id: userFound._id,
         username: userFound.username,
         email: userFound.email,
+        maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
+        expires: new Date(Date.now() + 3600000),
       });
     });
   } catch (error) {
