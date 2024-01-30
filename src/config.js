@@ -1,1 +1,1 @@
-export const TOKEN_SECRET='some secret key'
+TOKEN_SECRET='some secret key'

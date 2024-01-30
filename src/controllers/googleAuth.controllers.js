@@ -2,7 +2,7 @@ import User from "../models/user.model.js";
 import bcryp from "bcryptjs"; //encriptar la password
 import { CreateAccessToken } from "../libs/jwt.js";
 import jwt from "jsonwebtoken";
-import { TOKEN_SECRET } from "../config.js";
+// import { TOKEN_SECRET } from "../config.js";
 import * as dotenv from "dotenv";
 import fetch from "node-fetch";
 

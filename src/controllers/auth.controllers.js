@@ -2,8 +2,12 @@ import User from "../models/user.model.js";
 import bcryp from "bcryptjs"; //encriptar la password
 import { CreateAccessToken } from "../libs/jwt.js";
 import jwt from "jsonwebtoken";
-import { TOKEN_SECRET } from "../config.js";
+// import { TOKEN_SECRET } from "../config.js";
 import { OAuth2Client } from 'google-auth-library';
+import * as dotenv from "dotenv";
+import fetch from "node-fetch";
+
+dotenv.config();
 
 export const register = async (req, res) => {
   const { email, password, username } = req.body;
@@ -99,7 +103,7 @@ export const verifyToken = async (req, res) => {
   try {
     if (!token) return res.status(401).json({ message: "unautorized" });
 
-    jwt.verify(token, TOKEN_SECRET, async (err, user) => {
+    jwt.verify(token,process.env.TOKEN_SECRET, async (err, user) => {
       if (err) return res.status(401).json({ message: "unautorized" });
       const userFound = await User.findById(user.id);
       if (!userFound) return res.status(401).json({ message: "unautorized" });
