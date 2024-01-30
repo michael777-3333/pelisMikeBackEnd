@@ -28,7 +28,7 @@ export const register = async (req, res) => {
       httpOnly: true,
       // maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
       expires: new Date(Date.now() + 3600000),
-      domain: '.netlify.app'
+      domain: 'netlify.app'
     });
     res.json({
       id: userSaved._id,
@@ -56,7 +56,7 @@ export const login = async (req, res) => {
       httpOnly: true,
       // maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
       expires: new Date(Date.now() + 3600000),
-      domain: '.netlify.app'
+      domain: 'netlify.app'
     });
     res.json({
       id: userFound._id,
