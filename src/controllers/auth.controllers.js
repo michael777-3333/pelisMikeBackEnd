@@ -30,6 +30,7 @@ export const register = async (req, res) => {
       expires: new Date(Date.now() + 3600000),
       domain: '.pelis-mike-mxed.vercel.app'
     });
+    // console.log(res.cookies);
     res.json({
       id: userSaved._id,
       email: userSaved.email,
@@ -60,8 +61,10 @@ export const login = async (req, res) => {
         // httpOnly: true,
         // maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
         expires: new Date(Date.now() + 36000000),
-        domain: '.pelis-mike-mxed.vercel.app'
+        // domain: '.pelis-mike-mxed.vercel.app'
       });
+
+      console.log(res.cookie);
 
       
     
@@ -110,6 +113,7 @@ export const profile = async (req, res) => {
 };
 
 export const verifyToken = async (req, res) => {
+  // console.log(req);
   const { token } = req.cookies;
   console.log(token,'kkk');
   try {
