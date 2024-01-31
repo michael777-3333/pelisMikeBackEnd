@@ -25,10 +25,10 @@ export const register = async (req, res) => {
     res.cookie("token", token, {
       sameSite: "none", //que no esta en el mismo dominio la cookie
       secure: true,
-      httpOnly: true,
+      // httpOnly: true,
       // maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
       expires: new Date(Date.now() + 3600000),
-      domain: '.pelis-mike-mxed.vercel.app'
+      // domain: '.pelis-mike-mxed.vercel.app'
     });
     res.json({
       id: userSaved._id,
@@ -51,18 +51,18 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Incorrect password" });
     const token = await CreateAccessToken({ id: userFound._id });
 
-    try {
+   
       res.cookie("token", token, {
         sameSite: "none", //que no esta en el mismo dominio la cookie
         secure: true,
-        httpOnly: true,
+        // httpOnly: true,
         // maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
-        expires: new Date(Date.now() + 3600000),
-        domain: '.pelis-mike-mxed.vercel.app'
+        expires: new Date(Date.now() + 36000000),
+        // domain: '.pelis-mike-mxed.vercel.app'
       });
-    } catch (error) {
-      console.log(error);
-    }
+    
+      // console.log(error);
+    
     
     res.json({
       id: userFound._id,
@@ -107,7 +107,7 @@ export const profile = async (req, res) => {
 
 export const verifyToken = async (req, res) => {
   const { token } = req.cookies;
-
+  console.log(token,'kkk');
   try {
     if (!token) return res.status(401).json({ message: "unautorized" });
 

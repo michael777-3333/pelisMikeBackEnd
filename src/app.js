@@ -15,13 +15,14 @@ dotenv.config();
 
 const app= express()
  app.use(cors({
-   origin:'https://pelis-mike-mxed.vercel.app',
+   origin:'https://pelis-mike-e6rr.vercel.app',
    //  origin:'https://main--leafy-haupia-13a5b2.netlify.app',
-   // origin:'http://localhost:5173',
+   origin:'http://localhost:5173',
     credentials:true, // para que tenga las credentiales de cookies en los dos dominios 
 
  }
-    ));
+));
+// app.set('trust proxy',1)
     // esto ayuda porque al tener dos dominios en el backend y frondend no me bote el error de politicas 
 app.use(morgan('dev')) //muestra la peticion
 app.use(express.json()) //para que express entienda archivos Json
