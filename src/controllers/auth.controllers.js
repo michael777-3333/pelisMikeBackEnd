@@ -60,6 +60,8 @@ export const login = async (req, res) => {
         expires: new Date(Date.now() + 36000000),
         domain: '.pelis-mike-mxed.vercel.app'
       });
+
+      res.setHeader('Cache-Control', 'no-store');
     
       // console.log(error);
     
