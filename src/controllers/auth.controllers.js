@@ -3,7 +3,7 @@ import bcryp from "bcryptjs"; //encriptar la password
 import { CreateAccessToken } from "../libs/jwt.js";
 import jwt from "jsonwebtoken";
 // import { TOKEN_SECRET } from "../config.js";
-import { OAuth2Client } from 'google-auth-library';
+import { OAuth2Client } from "google-auth-library";
 import * as dotenv from "dotenv";
 import fetch from "node-fetch";
 
@@ -28,7 +28,7 @@ export const register = async (req, res) => {
       // httpOnly: true,
       // maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
       expires: new Date(Date.now() + 3600000),
-      domain: '.pelis-mike-mxed.vercel.app'
+      domain: ".pelis-mike-mxed.vercel.app",
     });
     // console.log(res.cookies);
     res.json({
@@ -50,28 +50,27 @@ export const login = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: "Incorrect password" });
     const token = await CreateAccessToken({ id: userFound._id });
-    res.setHeader('Cache-Control', 'no-store');
-    res.setHeader('Pragma', 'no-cache');
-      res.cookie("token", token, {
-        sameSite: "none", //que no esta en el mismo dominio la cookie
-        secure: true,
-        // httpOnly: true,
-        // maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
-        // expires: new Date(Date.now() + 36000000),
-        // domain: '.pelis-mike-mxed.vercel.app'
-      });
-      console.log(res.cookie);
+    res.setHeader("Cache-Control", "no-store");
+    res.setHeader("Pragma", "no-cache");
+    res.cookie("token", token, {
+      sameSite: "none", //que no esta en el mismo dominio la cookie
+      secure: true,
+      // httpOnly: true,
+      // maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
+      // expires: new Date(Date.now() + 36000000),
+      // domain: '.pelis-mike-mxed.vercel.app'
+    });
+    console.log(res.cookie);
     res.json({
       id: userFound._id,
       email: userFound.email,
       username: userFound.username,
     });
-  } catch (error) {
+  } 
+  catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
-
-
 
 export const logout = (req, res) => {
   try {
@@ -105,11 +104,11 @@ export const profile = async (req, res) => {
 export const verifyToken = async (req, res) => {
   // console.log(req);
   const { token } = req.cookies;
-  console.log(token,'kkk');
+  console.log(token, "kkk");
   try {
     if (!token) return res.status(401).json({ message: "unautorized" });
 
-    jwt.verify(token,process.env.TOKEN_SECRET, async (err, user) => {
+    jwt.verify(token, process.env.TOKEN_SECRET, async (err, user) => {
       if (err) return res.status(401).json({ message: "unautorized" });
       const userFound = await User.findById(user.id);
       if (!userFound) return res.status(401).json({ message: "unautorized" });
@@ -121,7 +120,6 @@ export const verifyToken = async (req, res) => {
       });
     });
   } catch (error) {
-    res.status(500).json({message:error.message})
+    res.status(500).json({ message: error.message });
   }
 };
-
