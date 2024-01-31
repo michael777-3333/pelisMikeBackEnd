@@ -51,7 +51,8 @@ export const login = async (req, res) => {
       return res.status(400).json({ message: "Incorrect password" });
     const token = await CreateAccessToken({ id: userFound._id });
 
-   
+    
+    res.setHeader('Cache-Control', 'no-store');
       res.cookie("token", token, {
         sameSite: "none", //que no esta en el mismo dominio la cookie
         secure: true,
@@ -61,7 +62,7 @@ export const login = async (req, res) => {
         domain: '.pelis-mike-mxed.vercel.app'
       });
 
-      res.setHeader('Cache-Control', 'no-store');
+      
     
       // console.log(error);
     
