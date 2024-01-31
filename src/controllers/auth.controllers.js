@@ -50,21 +50,22 @@ export const login = async (req, res) => {
     if (!isMatch)
       return res.status(400).json({ message: "Incorrect password" });
     const token = await CreateAccessToken({ id: userFound._id });
-    res.setHeader("Cache-Control", "no-store");
-    res.setHeader("Pragma", "no-cache");
-    res.cookie("token", token, {
-      sameSite: "none", //que no esta en el mismo dominio la cookie
-      secure: true,
-      // httpOnly: true,
-      // maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
-      // expires: new Date(Date.now() + 36000000),
-      // domain: '.pelis-mike-mxed.vercel.app'
-    });
+    // res.setHeader("Cache-Control", "no-store");
+    // res.setHeader("Pragma", "no-cache");
+    // res.cookie("token", token, {
+    //   sameSite: "none", //que no esta en el mismo dominio la cookie
+    //   secure: true,
+    //   httpOnly: true,
+    //   maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
+    //   expires: new Date(Date.now() + 36000000),
+    //   domain: '.pelis-mike-mxed.vercel.app'
+    // });
     console.log(res.cookie);
     res.json({
       id: userFound._id,
       email: userFound.email,
       username: userFound.username,
+      token:token
     });
   } 
   catch (error) {
