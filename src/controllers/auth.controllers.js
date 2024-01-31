@@ -61,7 +61,7 @@ export const login = async (req, res) => {
         // httpOnly: true,
         // maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
         expires: new Date(Date.now() + 36000000),
-        // domain: '.pelis-mike-mxed.vercel.app'
+        domain: '.pelis-mike-mxed.vercel.app'
       });
 
       console.log(res.cookie);
