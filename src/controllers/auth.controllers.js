@@ -53,12 +53,12 @@ export const login = async (req, res) => {
     res.setHeader('Cache-Control', 'no-store');
     res.setHeader('Pragma', 'no-cache');
       res.cookie("token", token, {
-        sameSite: "lax", //que no esta en el mismo dominio la cookie
+        sameSite: "none", //que no esta en el mismo dominio la cookie
         secure: true,
         // httpOnly: true,
         // maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
-        expires: new Date(Date.now() + 36000000),
-        domain: '.pelis-mike-mxed.vercel.app'
+        // expires: new Date(Date.now() + 36000000),
+        // domain: '.pelis-mike-mxed.vercel.app'
       });
       console.log(res.cookie);
     res.json({
