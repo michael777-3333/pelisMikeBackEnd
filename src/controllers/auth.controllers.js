@@ -53,6 +53,7 @@ export const login = async (req, res) => {
 
     
     res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('Pragma', 'no-cache');
       res.cookie("token", token, {
         sameSite: "none", //que no esta en el mismo dominio la cookie
         secure: true,
