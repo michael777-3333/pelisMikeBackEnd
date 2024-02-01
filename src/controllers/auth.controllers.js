@@ -103,7 +103,7 @@ export const profile = async (req, res) => {
 };
 
 export const verifyToken = async (req, res) => {
-  console.log(req);
+  console.log(req.cookies, 'll;;');
   const  token  = req.cookies.token;
   console.log(token, "kkk");
   try {
