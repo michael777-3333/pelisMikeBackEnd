@@ -104,7 +104,7 @@ export const profile = async (req, res) => {
 
 export const verifyToken = async (req, res) => {
   console.log(req.cookies, 'll;;');
-  const  token  = req.cookies.token;
+  const  token  = req.cookies.token.jwt;
   console.log(token, "kkk");
   try {
     if (!token) return res.status(401).json({ message: "unautorized" });
