@@ -9,7 +9,13 @@ import user from './routes/user.routes.js'
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import * as dotenv from 'dotenv'
-  
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+// import express from 'express';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 import {google} from 'googleapis'
 dotenv.config();
 
