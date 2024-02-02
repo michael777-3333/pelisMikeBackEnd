@@ -22,6 +22,9 @@ const app= express()
 
  }
 ));
+
+app.use('/img', express.static(__dirname + '/src/img'));
+
 // app.set('trust proxy',1)
     // esto ayuda porque al tener dos dominios en el backend y frondend no me bote el error de politicas 
 app.use(morgan('dev')) //muestra la peticion
