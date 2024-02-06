@@ -5,10 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "start":"node src/index.js",
+    "start": "node src/index.js",
     "dev": "nodemon src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
-   
   },
   "author": "michael",
   "license": "ISC",
@@ -23,10 +22,12 @@
     "google-auth-library": "^9.5.0",
     "googleapis": "^131.0.0",
     "jsonwebtoken": "^9.0.2",
+    "mercadopago": "^1.5.16",
     "mongodb": "^6.3.0",
     "mongoose": "^8.0.4",
     "morgan": "^1.10.0",
     "node-fetch": "^3.3.2",
+    "stripe": "^14.15.0",
     "zod": "^3.22.4"
   }
 }
