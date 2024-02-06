@@ -24,8 +24,8 @@ export const createOrder = async (req, res) => {
     ],
 
     mode:'payment',
-    success_url:'http://localhost:5173/#/start/movies',
-    cancel_url:'http://localhost:3000/cancel'
+    success_url:'https://pelis-mike-e6rr.vercel.app/#/start/movies',
+    cancel_url:'https://pelis-mike-e6rr.vercel.app/#/start'
   });
 
   return res.json(session)
