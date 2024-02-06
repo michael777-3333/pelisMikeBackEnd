@@ -6,7 +6,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 export const authRequired=(req,res,next)=>{
     console.log('ddd');
-    const {token}=req.cookies
+    const {token}=req.headers.authorization
     if (!token) 
         return res.status(401).json({message: "No token, autorization denied"})  
     

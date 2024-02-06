@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+// import { boolean } from "zod";
 
 const userSchema = new mongoose.Schema({
     username:{
@@ -15,6 +16,10 @@ const userSchema = new mongoose.Schema({
     password:{
         type:String,
         require:true
+    },
+    movie:{
+        type:Boolean,
+        default:false
     }
 }, {
     timestamps:true

@@ -22,19 +22,14 @@ export const register = async (req, res) => {
     });
     const userSaved = await newUser.save();
     const token = await CreateAccessToken({ id: userSaved._id });
-    res.cookie("token", token, {
-      sameSite: "none", //que no esta en el mismo dominio la cookie
-      secure: true,
-      // httpOnly: true,
-      // maxAge: 3600000, // Opcional: especifica el tiempo de vida en milisegundos
-      expires: new Date(Date.now() + 3600000),
-      domain: ".pelis-mike-mxed.vercel.app",
-    });
+    
     // console.log(res.cookies);
     res.json({
       id: userSaved._id,
       email: userSaved.email,
       username: userSaved.username,
+      movie:userSaved.movie,
+      token:token
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -60,11 +55,13 @@ export const login = async (req, res) => {
     //   expires: new Date(Date.now() + 36000000),
     //   domain: '.pelis-mike-mxed.vercel.app'
     // });
-    console.log(res.cookie);
+    console.log(userFound,'userr');
     res.json({
       id: userFound._id,
       email: userFound.email,
       username: userFound.username,
+      movie:userFound.movie,
+      dsds:userFound.dsds,
       token:token
     });
   } 
@@ -96,6 +93,7 @@ export const profile = async (req, res) => {
       id: userFound._id,
       email: userFound.email,
       username: userFound.username,
+      movie:userFound.movie
     });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -113,11 +111,12 @@ export const verifyToken = async (req, res) => {
       if (err) return res.status(401).json({ message: "unautorized" });
       const userFound = await User.findById(user.id);
       if (!userFound) return res.status(401).json({ message: "unautorized" });
-      // console.log(userFound,'ddd');
+      console.log(userFound,'ddd');
       return res.json({
         id: userFound._id,
         username: userFound.username,
         email: userFound.email,
+        movie:userFound['movie']
       });
     });
   } catch (error) {
