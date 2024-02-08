@@ -16,3 +16,18 @@ export function CreateAccessToken(payload) {
             })
     })
 }
+
+export function TokenForgetPassword(payload) {
+    return new Promise((resolve, reject) => {
+         jwt.sign(
+             payload,
+             process.env.TOKEN_SECRET,
+             {
+                 expiresIn:"5m"
+             },
+             (err,token)=>{
+                 if (err) reject(err);
+                 resolve(token)
+             })
+     })
+ }

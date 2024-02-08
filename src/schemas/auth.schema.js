@@ -7,6 +7,9 @@ export const registerSchema = z.object({
   email: z.string({
     required_error: "Email is required",
   }),
+  email: z.string({
+    required_error: "must be an email valid",
+  }).email(),
   password: z
     .string({
       required_error: "Password is required",
@@ -30,4 +33,18 @@ export const loginSchema = z.object({
       .min(6, {
         message: "Password must be at least 6 characters",
       }),
-  });
+});
+export const updatePassword = z.object({
+  
+  password: z.string({required_error: "Password is required"}).min(6, {
+      message: "Password must be at least 6 characters",
+    }),
+  confirm: z.string()
+}).refine(
+  (values)=>{
+    return values.password=== values.confirm
+  },
+  {
+    message:'Password must match',
+  }
+);
