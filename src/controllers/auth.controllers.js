@@ -39,6 +39,8 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   const { email, password } = req.body;
   try {
+    console.log('sfdffdf');
+    
     const userFound = await User.findOne({ email });
     if (!userFound) return res.status(400).json(["User not found"]);
     const isMatch = await bcryp.compare(password, userFound.password);
